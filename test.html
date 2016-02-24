@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="foio.js"></script>
+    <script>
+    var vm1 = foio.controller({
+        $id: 'test',
+        nickname: "积木村",
+        age: 22,
+    })
+
+    window.setInterval(function() {
+        var randAge = 20 + Math.ceil(Math.random() * 10);
+        console.log(randAge);
+        vm1.age =  randAge;
+    }, 1000);
+
+    var vm2 = foio.controller({
+        $id: 'subtest',
+        profile: '我是一个码农'
+    });
+    </script>
+</head>
+
+<body foio-controller='test'>
+    <label>名字:</label>
+    <input type="text" foio-model="nickname">
+    <div foio-controller="subtest">
+        <label>自我介绍:</label>
+        <input type="text" foio-model="profile">
+        <p>你的名字:{{nickname}}</p>
+        <p>你的年龄:{{age}}</p>
+        <p>你的自我介绍:{{profile}}</p>
+    </div>
+</body>
+
+</html>
